@@ -36,11 +36,13 @@
 // export default Index;
 
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   SidebarProvider,
   SidebarInset,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { Button } from "@/components/ui/button";
 import { AppSidebar } from "../components/AppSidebar";
 import KanbanBoard from "../components/KanbanBoard";
 import { 
@@ -52,10 +54,17 @@ import {
   Users, 
   TrendingUp,
   Building,
-  CreditCard
+  CreditCard,
+  LogIn
 } from "lucide-react";
 
 const Index = () => {
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    navigate('/login');
+  };
+
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-gradient-to-br from-indigo-50 via-white to-purple-50 overflow-hidden">
@@ -79,6 +88,17 @@ const Index = () => {
                 </div>
               </div>
             </div>
+            
+            {/* Login Button */}
+            <Button
+              onClick={handleLoginClick}
+              variant="outline"
+              size="sm"
+              className="flex items-center gap-2 border-indigo-200 text-indigo-600 hover:bg-indigo-50 hover:text-indigo-700 hover:border-indigo-300 transition-all duration-200"
+            >
+              <LogIn className="w-4 h-4" />
+              Login
+            </Button>
           </header>
           <div className="flex-1 p-4 bg-gradient-to-br from-indigo-50/30 via-white/20 to-purple-50/40 relative overflow-hidden">
             {/* Animated background elements */}
